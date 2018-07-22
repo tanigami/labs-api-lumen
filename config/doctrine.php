@@ -111,7 +111,6 @@ return [
         'user_id' => \Shippinno\Labs\Infrastructure\Persistence\Doctrine\Type\EntityId\DoctrineUserId::class,
         'lab_id' => \Shippinno\Labs\Infrastructure\Persistence\Doctrine\Type\EntityId\DoctrineLabId::class,
         'session_id' => \Shippinno\Labs\Infrastructure\Persistence\Doctrine\Type\EntityId\DoctrineSessionId::class,
-        'api_token' => \Shippinno\Learn\Infrastructure\Persistence\Doctrine\Type\ApiTokenType::class,
     ],
     /*
     |--------------------------------------------------------------------------

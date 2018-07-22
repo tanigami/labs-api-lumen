@@ -7,7 +7,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../learn",
+            "url": "../labs",
             "options": {
                 "symlink": true
             }
@@ -19,9 +19,7 @@
         "shippinno/learn": "*",
         "vlucas/phpdotenv": "~2.2",
         "laravel-doctrine/orm": "^1.4",
-        "tobscure/json-api": "^0.4.1",
         "zircote/swagger-php": "3.x-dev",
-        "league/fractal": "^0.17.0",
         "barryvdh/laravel-cors": "^0.11.0",
         "willdurand/hateoas": "^2.12",
         "auth0/auth0-php": "^5.2",
