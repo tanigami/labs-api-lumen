@@ -1,0 +1,6 @@
+/build/
+/vendor/
+/phpunit.xml
+.idea
+.env
+.DS_Store
