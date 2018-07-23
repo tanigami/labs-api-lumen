@@ -3,7 +3,7 @@
 namespace App\Http\Api\DataTransformer;
 
 use App\Http\Api\Resource\UserMeResource;
-use Shippinno\Labs\Application\DataTransformer\UserDataTransformer;
+use Shippinno\Labs\Application\DataTransformer\Lab\UserDataTransformer;
 use Shippinno\Labs\Domain\Model\User\User;
 
 class UserMeResourceDataTransformer implements UserDataTransformer

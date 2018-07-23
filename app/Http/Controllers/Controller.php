@@ -29,11 +29,6 @@ class Controller extends BaseController
     protected $expressionBuilder;
 
     /**
-     * @var Fractal
-     */
-    protected $fractal;
-
-    /**
      * @var Hateoas
      */
     protected $hateoas;
@@ -42,15 +37,13 @@ class Controller extends BaseController
      * @param ManagerRegistry $managerRegistry
      * @param CommandBus $commandBus
      * @param ExpressionBuilder $expressionBuilder
-     * @param Fractal $fractal
      * @param Hateoas $hateoas
      */
-    public function __construct(ManagerRegistry $managerRegistry, CommandBus $commandBus, ExpressionBuilder $expressionBuilder, Fractal $fractal, Hateoas $hateoas)
+    public function __construct(ManagerRegistry $managerRegistry, CommandBus $commandBus, ExpressionBuilder $expressionBuilder, Hateoas $hateoas)
     {
         $this->managerRegistry = $managerRegistry;
         $this->commandBus = $commandBus;
         $this->expressionBuilder = $expressionBuilder;
-        $this->fractal = $fractal;
         $this->hateoas = $hateoas;
     }
 

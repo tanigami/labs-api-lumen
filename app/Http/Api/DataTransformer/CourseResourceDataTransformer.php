@@ -6,7 +6,7 @@ use App\Http\Api\Resource\CourseResource;
 use App\Http\Api\Resource\EnrollmentResource;
 use App\Http\Api\Resource\SessionResource;
 use DateTime;
-use Shippinno\Labs\Application\DataTransformer\LabDataTransformer;
+use Shippinno\Labs\Application\DataTransformer\Lab\LabDataTransformer;
 use Shippinno\Labs\Domain\Model\Lab\Lab;
 use Shippinno\Labs\Domain\Model\Lab\Enrollment;
 use Shippinno\Labs\Domain\Model\Lab\Session;

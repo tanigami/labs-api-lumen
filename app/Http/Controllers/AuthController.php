@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Api\DataTransformer\UserMeResourceDataTransformer;
 use App\Http\Api\Resource\UserMeResource;
 use Illuminate\Http\Request;
-use Shippinno\Labs\Application\DataTransformer\UserDtoDataTransformer;
+use Shippinno\Labs\Application\DataTransformer\Lab\UserDtoDataTransformer;
 use Shippinno\Labs\Application\Service\SignInUserRequest;
 use Shippinno\Labs\Application\Service\SignInUserService;
 use Shippinno\Labs\Application\Service\SignUpUserRequest;

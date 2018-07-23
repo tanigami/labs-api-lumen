@@ -21,15 +21,15 @@ use Shippinno\Labs\Application\Command\Lab\CreateLab;
 use Shippinno\Labs\Application\Command\Lab\CreateLabHandler;
 use Shippinno\Labs\Application\Command\Lab\DeleteLab;
 use Shippinno\Labs\Application\Command\Lab\DeleteLabHandler;
-use Shippinno\Labs\Application\DataTransformer\LabDtoDataTransformer;
-use Shippinno\Labs\Application\DataTransformer\SessionDtoDataTransformer;
-use Shippinno\Labs\Application\Query\AllCoursesQueryHandler;
-use Shippinno\Labs\Application\Query\OneLabHandler;
+use Shippinno\Labs\Application\DataTransformer\Lab\LabDtoDataTransformer;
+use Shippinno\Labs\Application\DataTransformer\Lab\SessionDtoDataTransformer;
+use Shippinno\Labs\Application\Query\FilterLabsHandler;
+use Shippinno\Labs\Application\Query\FetchLabHandler;
 use Shippinno\Labs\Application\Query\QueryBus;
 use Shippinno\Labs\Application\Query\SessionsOfCourseQueryHandler;
 use Shippinno\Labs\Domain\Model\Lab\Lab;
 use Shippinno\Labs\Domain\Model\Lab\LabRepository;
-use Shippinno\Labs\Domain\Model\Lab\CourseSpecificationFactory;
+use Shippinno\Labs\Domain\Model\Lab\LabSpecificationFactory;
 use Shippinno\Labs\Domain\Model\Lab\Enrollment;
 use Shippinno\Labs\Domain\Model\Lab\EnrollmentRepository;
 use Shippinno\Labs\Domain\Model\Lab\Session;
@@ -39,7 +39,7 @@ use Shippinno\Labs\Domain\Model\User\PasswordHashing;
 use Shippinno\Labs\Domain\Model\User\User;
 use Shippinno\Labs\Domain\Model\User\UserRepository;
 use Shippinno\Labs\Domain\Model\User\UserSpecificationFactory;
-use Shippinno\Labs\Infrastructure\Domain\Model\Lab\DoctrineCourseSpecificationFactory;
+use Shippinno\Labs\Infrastructure\Domain\Model\Lab\DoctrineLabSpecificationFactory;
 use Shippinno\Labs\Infrastructure\Domain\Model\Lab\DoctrineSessionSpecificationFactory;
 use Shippinno\Labs\Infrastructure\Domain\Model\User\Auth0UserRepository;
 use Shippinno\Labs\Infrastructure\Domain\Model\User\BcryptPasswordHashing;
@@ -115,14 +115,14 @@ $app->singleton(UserRepository::class, function (Application $app) {
     return new Auth0UserRepository(new Client());
 });
 
-$app->singleton(CourseSpecificationFactory::class, DoctrineCourseSpecificationFactory::class);
+$app->singleton(LabSpecificationFactory::class, DoctrineLabSpecificationFactory::class);
 $app->singleton(SessionSpecificationFactory::class, DoctrineSessionSpecificationFactory::class);
 $app->singleton(UserSpecificationFactory::class, DoctrineUserSpecificationFactory::class);
 
 //$app->singleton(QueryBus::class, function (Application $app) {
 //    $queryBus = new QueryBus;
 //    $queryBus->register(new AllCoursesQueryHandler($app->get(CourseRepository::class), new LabDtoDataTransformer));
-//    $queryBus->register(new OneLabHandler($app->get(CourseRepository::class), new LabDtoDataTransformer));
+//    $queryBus->register(new FetchLabHandler($app->get(CourseRepository::class), new LabDtoDataTransformer));
 //    $queryBus->register(
 //        new SessionsOfCourseQueryHandler(
 //            $app->get(SessionSpecificationFactory::class),
@@ -134,8 +134,8 @@ $app->singleton(UserSpecificationFactory::class, DoctrineUserSpecificationFactor
 //    return $queryBus;
 //});
 
-$app->bind(OneLabHandler::class, function (Application $app) {
-    return new OneLabHandler($app->get(LabRepository::class), new LabDtoDataTransformer) ;
+$app->bind(FetchLabHandler::class, function (Application $app) {
+    return new FetchLabHandler($app->get(LabRepository::class), new LabDtoDataTransformer) ;
 });
 
 $app->bind(SessionsOfCourseQueryHandler::class, function (Application $app) {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88a42108aba9694d06b0ec49e9156135",
+    "content-hash": "96cd4c3a5e238b04362f849c6a9da8fa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3652,12 +3652,12 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
-            "name": "shippinno/learn",
+            "name": "shippinno/labs",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../labs",
-                "reference": "ff3f99927a3cc1658855b166aa03d429318125e4",
+                "reference": "65234a7eee45498fed53f19343a6aacbbaaf2bed",
                 "shasum": null
             },
             "require": {

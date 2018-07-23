@@ -15,12 +15,12 @@ use League\Fractal\Manager;
 use Shippinno\Labs\Application\Command\Lab\CreateLab;
 use Shippinno\Labs\Application\Command\Lab\DeleteLab;
 use Shippinno\Labs\Application\Command\Lab\DeleteLabCommand;
-use Shippinno\Labs\Application\Query\AllCoursesQuery;
-use Shippinno\Labs\Application\Query\AllCoursesQueryHandler;
-use Shippinno\Labs\Application\Query\CourseOrdering;
+use Shippinno\Labs\Application\Query\FilterLabs;
+use Shippinno\Labs\Application\Query\FilterLabsHandler;
+use Shippinno\Labs\Application\Query\LabOrdering;
 use Shippinno\Labs\Application\Query\Limiting;
-use Shippinno\Labs\Application\Query\OneLab;
-use Shippinno\Labs\Application\Query\OneLabHandler;
+use Shippinno\Labs\Application\Query\FetchLab;
+use Shippinno\Labs\Application\Query\FetchLabHandler;
 use Shippinno\Labs\Application\Query\QueryBus;
 use Shippinno\Labs\Application\Service\AddSessionToCourseRequest;
 use Shippinno\Labs\Application\Service\AddSessionToCourseService;
@@ -86,18 +86,18 @@ class LabController extends Controller
      *     }
      * )
      */
-    public function index(Request $request, AllCoursesQueryHandler $queryHandler)
+    public function index(Request $request, FilterLabsHandler $queryHandler)
     {
         $page = $request->query('page', 1);
         $limit = $request->query('limit', 200);
         $filteringExpressions = $this->filteringExpressions($request);
 
         $result = $queryHandler->handle(
-            new AllCoursesQuery(
+            new FilterLabs(
                 $filteringExpressions,
-                new CourseOrdering(
-                    CourseOrdering::ORDER_BY_NAME,
-                    CourseOrdering::DIRECTION_ASC
+                new LabOrdering(
+                    LabOrdering::ORDER_BY_NAME,
+                    LabOrdering::DIRECTION_ASC
                 ),
                 new Limiting($limit)
             ),
@@ -120,10 +120,10 @@ class LabController extends Controller
         return $this->hateoas->serialize($paginated, 'json');
     }
 
-    public function show(OneLabHandler $queryHandler, string $courseId)
+    public function show(FetchLabHandler $queryHandler, string $courseId)
     {
         $resource = $queryHandler->handle(
-            new OneLab($courseId),
+            new FetchLab($courseId),
             new CourseResourceDataTransformer
         );
 

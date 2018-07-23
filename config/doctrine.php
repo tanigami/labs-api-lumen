@@ -27,7 +27,7 @@ return [
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [],
             'paths'         => [
-                base_path('vendor/shippinno/learn/src/Infrastructure/Persistence/Doctrine/Mapping')
+                base_path('vendor/shippinno/labs/src/Infrastructure/Persistence/Doctrine/Mapping')
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [

@@ -16,7 +16,7 @@
     "require": {
         "php": ">=7.1.3",
         "laravel/lumen-framework": "5.6.*",
-        "shippinno/learn": "*",
+        "shippinno/labs": "*",
         "vlucas/phpdotenv": "~2.2",
         "laravel-doctrine/orm": "^1.4",
         "zircote/swagger-php": "3.x-dev",
